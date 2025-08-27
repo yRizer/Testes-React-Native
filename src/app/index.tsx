@@ -18,7 +18,7 @@ export default function Index() {
         <View style={rootStyles.container}>
             <Text style={rootStyles.title}>Olá {nome}</Text>
 
-            <Input placeholder='Seu Nome' onChangeText={setNome} />
+            <Input placeholder='Seu Nome: ' onChangeText={setNome} />
 
             <Button title='Enviar' onPress={handleNext} activeOpacity={0.1} />
             <Button title='Cancelar' />

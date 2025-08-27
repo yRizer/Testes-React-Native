@@ -41,6 +41,11 @@ export default function Dashboard() {
             name: 'Carrosel Slider',
             directory: 'projects/CarroselSlider',
         },
+        {
+            id: 8,
+            name: 'Demonstration',
+            directory: 'projects/Demostration',
+        },
     ]
 
     return (

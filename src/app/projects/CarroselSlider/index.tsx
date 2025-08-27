@@ -16,7 +16,7 @@ import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { rootStyles } from '@/app/styles/styles';
 import { Button } from '@/components/button';
 import { router } from 'expo-router';
-
+import { Carrossel, NavigationDots } from '@/components/carrossel';
 
 const images = [
     {
@@ -42,9 +42,6 @@ const images = [
 ]
 
 const App = () => {
-    const scrollX = useAnimatedValue(0);
-
-    const { width: windowWidth } = useWindowDimensions();
 
     return (
         <SafeAreaProvider>
@@ -52,58 +49,17 @@ const App = () => {
                 <Text style={rootStyles.title}>Carrosel Slider</Text>
                 <Text style={rootStyles.text}>Scroll horizontal com animação</Text>
                 <View style={styles.scrollContainer}>
-                    <ScrollView
-                        horizontal={true}
-                        pagingEnabled
-                        showsHorizontalScrollIndicator={false}
-                        onScroll={Animated.event([
-                            {
-                                nativeEvent: {
-                                    contentOffset: {
-                                        x: scrollX,
-                                    },
-                                },
-                            },
-                        ])}
-                        scrollEventThrottle={1}>
-                        {images.map((image, imageIndex) => {
-                            return (
-                                <View
-                                    style={{ width: 400, height: 250, backgroundColor: image.color }}
-                                    key={imageIndex}>
-                                    <Text style={rootStyles.title}>{image.title}</Text>
-                                </View>
-                            );
-                        })}
-                    </ScrollView>
-
-
+                    <Carrossel images={images} width={400} height={250} />
                 </View>
                 <View style={styles.indicatorContainer}>
-                    {images.map((image, imageIndex) => {
-                        const width = scrollX.interpolate({
-                            inputRange: [
-                                windowWidth * (imageIndex - 1),
-                                windowWidth * imageIndex,
-                                windowWidth * (imageIndex + 1),
-                            ],
-                            outputRange: [8, 16, 8],
-                            extrapolate: 'clamp',
-                        });
-                        return (
-                            <Animated.View
-                                key={imageIndex}
-                                style={[styles.normalDot, { width }]}
-                            />
-                        );
-                    })}
+                    <NavigationDots images={images} />
                 </View>
 
-                <Text style={rootStyles.text}> O atributo <Text style={{color: '#FF5733'}}>pagingEnabled</Text> funciona como o esperado apenas se o <Text style={{color: '#3658d4ff'}}>ScrollView</Text> possuir o mesmo tamanho que os objetos de dentro</Text>
-                <Text style={rootStyles.text}>Neste caso, tanto o <Text style={{color: '#3658d4'}}>ScrollView</Text> quanto as <Text style={{color: '#3658d4ff'}}>Views</Text> possuem <Text style={{color: '#36d448ff'}}>widths</Text> iguais.</Text>
+                <Text style={rootStyles.text}> O atributo <Text style={{ color: '#FF5733' }}>pagingEnabled</Text> funciona como o esperado apenas se o <Text style={{ color: '#3658d4ff' }}>ScrollView</Text> possuir o mesmo tamanho que os objetos de dentro</Text>
+                <Text style={rootStyles.text}>Neste caso, tanto o <Text style={{ color: '#3658d4' }}>ScrollView</Text> quanto as <Text style={{ color: '#3658d4ff' }}>Views</Text> possuem <Text style={{ color: '#36d448ff' }}>widths</Text> iguais.</Text>
 
                 <Button title="Voltar" onPress={() => router.back()} />
-                
+
             </SafeAreaView>
         </SafeAreaProvider>
     );

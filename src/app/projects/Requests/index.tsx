@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function Requests() {
 
-    const URL = 'http://10.0.3.152:3333/videos';
+    const URL = 'http://192.168.1.14:3333/qr-info/QR001';
 
     const [data, setData] = useState<any[]>([])
 
@@ -18,7 +18,9 @@ export default function Requests() {
                 method: 'GET',
             });
             const data = await response.json();
+
             setData(data);
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -37,7 +39,9 @@ export default function Requests() {
                     duration: 180
                 }),
             });
+
             const data = await response.json();
+
             setData(data);
         } catch (error) {
             console.error('Error posting data:', error);
@@ -54,16 +58,19 @@ export default function Requests() {
 
             <Button title="Voltar" onPress={function () { router.back() }} />
 
-            {data && data.map((item, index) => {
-                return (
-                    <View key={index} style={{ marginVertical: 8 }}>
-                        <Text style={{ color: '#fff' }}>ID: {item.id}</Text>
-                        <Text style={{ color: '#fff' }}>Título: {item.title}</Text>
-                        <Text style={{ color: '#fff' }}>Descrição: {item.description}</Text>
-                        <Text style={{ color: '#fff' }}>Duração: {item.duration} segundos</Text>
-                    </View>
-                )
-            })}
+            {/**
+             * Data example:
+             * {"data": [
+             * {"descricao": "Essas parreiras foram plantadas em 2005 e produzem uvas Cabernet Sauvignon, conhecidas por seu sabor encorpado e aroma de frutas escuras.",
+             *  "id": 1,
+             *  "images": [Array],
+             *  "localizacao": "Vinhedo Setor A",
+             *  "nome_item": "Parreira Cabernet Sauvignon",
+             *  "qr_code": "QR001"}],
+             *  "status": "success"}
+             */}
+
+            <Text style={{ marginTop: 20, color: '#fff' }}>{JSON.stringify(data)}</Text>
 
         </View>
 
