@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 import {
     ScrollView,
@@ -6,17 +6,15 @@ import {
     useAnimatedValue,
     View,
     Text,
-    useWindowDimensions
+    useWindowDimensions,
+    ImageBackground
 } from "react-native"
 
 import { rootStyles } from "@/app/styles/styles"
 import { styles } from "./styles"
 
 type CarrosselProps = {
-    images: Array<{
-        title: string,
-        color: string,
-    }>;
+    images: any[];
     width: number;
     height: number;
 };
@@ -26,6 +24,12 @@ type DotsProps = {
         title: string,
         color: string,
     }>;
+}
+
+type CarrosselImagesProps = {
+    images: any[];
+    width: number;
+    height: number;
 }
 
 
@@ -65,6 +69,39 @@ export function Carrossel({ images, width, height }: CarrosselProps) {
         </ScrollView>
     )
 }
+
+export function CarrosselImages({ images, width, height }: CarrosselImagesProps) {
+    
+    return (
+        <ScrollView
+            style={{ width: width, height: height }}
+            horizontal={true}
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            onScroll={Animated.event([
+                {
+                    nativeEvent: {
+                        contentOffset: {
+                            x: scrollX,
+                        },
+                    },
+                },
+            ])}
+            scrollEventThrottle={1}>
+            {images.map((source, index) => {
+                console.log(source);
+                
+                return (
+                    <ImageBackground
+                        source={{ uri: source }}
+                        style={{ width: width, height: height}}
+                        key={index}>
+                    </ImageBackground>
+                )
+            })}
+        </ScrollView>
+    )
+};
 
 export function NavigationDots({ images }: DotsProps) {
 

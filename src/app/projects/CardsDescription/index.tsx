@@ -29,7 +29,7 @@ export default function CardsDescription() {
             <Button title="Voltar" onPress={() => router.back()} />
             {
                 isOpen &&
-                <Sheet onClose={toggleSheet} SheetHeight={60} Percentage={true}></Sheet>
+                <Sheet onClose={toggleSheet} SheetHeight={60} Percentage={true} description='testado'> </Sheet>
             }
 
         </GestureHandlerRootView>
