@@ -121,7 +121,7 @@ export function SheetUp(
                 offset.value = withSpring(0);
             } else if ((-offset.value > DIMENSIONS.height / 3 || event.velocityY < -2000) && Expand) {
                 console.log('expandiu');
-                offset.value = withSpring(-SetPosY);
+                offset.value = withSpring(-SetPosY + 100);
             } else {
                 offset.value = withSpring(0);
             }

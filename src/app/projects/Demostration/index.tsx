@@ -54,7 +54,7 @@ export default function Demonstration() {
             <SafeAreaView style={[rootStyles.container, styles.container]}>
                 <GestureHandlerRootView>
                     {response ? <CarrosselImages images={colection.images} width={windowWidth} height={700} /> : null}
-                    {response ? <SheetUp SetPosY={60} SheetHeight={1000} Percentage={true} Expand={true} description={colection.descricao}/>: null}
+                    {response ? <SheetUp SetPosY={60} SheetHeight={2000} Percentage={true} Expand={true} description={colection.descricao}/>: null}
                 </GestureHandlerRootView>
             </SafeAreaView>
         </SafeAreaProvider>
