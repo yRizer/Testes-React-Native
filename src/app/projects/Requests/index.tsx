@@ -1,3 +1,5 @@
+import React from "react";
+
 import { StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 
@@ -8,7 +10,7 @@ import { useState } from "react";
 
 export default function Requests() {
 
-    const URL = 'http://192.168.1.14:3333/qr-info/QR001';
+    const URL = 'http://192.168.1.9:3333/qr-info/QR001';
 
     const [data, setData] = useState<any[]>([])
 

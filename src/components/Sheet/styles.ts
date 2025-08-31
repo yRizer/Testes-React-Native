@@ -10,9 +10,17 @@ export const styles = StyleSheet.create({
         bottom: -50,
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
+        // alignItems: 'center',
     },
     dragIcon: {
         alignSelf: 'center',
         marginTop: 8,
+    },
+    textDescription: {
+        marginBlock: 16,
+        marginInline: 35,
+        fontSize: 20,
+        color: '#333',
+        // alignSelf: 'center',
     }
 });

@@ -1,3 +1,5 @@
+
+import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Button } from "@/components/button";
 import { router } from "expo-router";
@@ -40,6 +42,11 @@ export default function Dashboard() {
             id: 7,
             name: 'Carrosel Slider',
             directory: 'projects/CarroselSlider',
+        },
+        {
+            id: 8,
+            name: 'Demonstration',
+            directory: 'projects/Demostration',
         },
     ]
 

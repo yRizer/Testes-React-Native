@@ -7,7 +7,7 @@ import { rootStyles } from "@/app/styles/styles";
 import { Text, StyleSheet } from "react-native";
 
 import { Button } from "@/components/button";
-import { Sheet } from "@/components/Sheet";
+import { SheetDown } from "@/components/Sheet";
 
 import { router } from "expo-router";
 
@@ -29,7 +29,7 @@ export default function CardsDescription() {
             <Button title="Voltar" onPress={() => router.back()} />
             {
                 isOpen &&
-                <Sheet onClose={toggleSheet} SheetHeight={60} Percentage={true}></Sheet>
+                <SheetDown onClose={toggleSheet} SheetHeight={60} Percentage={true} description='testado'> </SheetDown>
             }
 
         </GestureHandlerRootView>

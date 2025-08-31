@@ -1,3 +1,4 @@
+import React from "react";
 import { rootStyles } from "@/app/styles/styles";
 import { Button } from "@/components/button";
 import { router } from "expo-router";
