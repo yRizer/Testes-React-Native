@@ -89,8 +89,6 @@ export function CarrosselImages({ images, width, height }: CarrosselImagesProps)
             ])}
             scrollEventThrottle={1}>
             {images.map((source, index) => {
-                console.log(source);
-                
                 return (
                     <ImageBackground
                         source={{ uri: source }}

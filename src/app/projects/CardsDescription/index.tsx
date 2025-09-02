@@ -17,8 +17,6 @@ export default function CardsDescription() {
 
     function toggleSheet() {
         setIsOpen((prevState) => !prevState);
-
-        console.log('toggleSheet called', !isOpen);
     }
 
     return (

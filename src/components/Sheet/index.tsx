@@ -100,27 +100,17 @@ export function SheetUp(
 
     const offset = useSharedValue(0);
 
-    function close() {
-        onClose()
-    }
-
     const pan = Gesture.Pan().onChange(function (event) {
         const offsetDelta = event.changeY + offset.value;
         const clamp = Math.max(-SheetOverDrag, offsetDelta)
 
         offset.value = offsetDelta < 0 ? offsetDelta : withSpring(clamp)
 
-        // console.log(offsetDelta);
     })
         .onFinalize(function (event) {
-
-            console.log(event.velocityY > 2000);
-
             if (event.velocityY > 2000) {
-                console.log('fechou');
                 offset.value = withSpring(0);
             } else if ((-offset.value > DIMENSIONS.height / 3 || event.velocityY < -2000) && Expand) {
-                console.log('expandiu');
                 offset.value = withSpring(-SetPosY + 100);
             } else {
                 offset.value = withSpring(0);

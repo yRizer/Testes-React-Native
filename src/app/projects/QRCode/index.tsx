@@ -2,7 +2,7 @@ import React,{ useState, useRef } from 'react';
 
 import { View, Text, StyleSheet, Modal } from 'react-native';
 
-import { router } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 
 import { Button } from '@/components/button';
@@ -32,6 +32,8 @@ export default function QRCodeScanner() {
 
     function handleQRCodeScanned(data: string) {
         console.log('QR Code scanned:', data);
+        const router = useRouter()
+        router.push({ pathname: '/projects/Demostration', params: { QRCode: data } });
     }
 
     return (
